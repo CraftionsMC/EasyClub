@@ -5,7 +5,7 @@
  * ===
  *
  * In the following documentation you will find many entries called '%baseurl'.
- * You have to replace '%baseurl' with 'http://craftions.net/account/api.php' in your url.
+ * You have to replace '%baseurl' with 'http://your_easy_club_url.com/account/auth.php' in your url.
  *
  * Normal Authentication (with username and password)
  * URL:
@@ -72,13 +72,13 @@
  * Copyright (c) 2020 Craftions.net, Ben Siebert. All rights reserved.
  */
 
-$config = require('config.php');
+$config = require('../config/database.php'); # This File does not exists! See ../config/info.php
 
 // Headers for CORS
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json");
 
-$pdo = new PDO('mysql:host='.$host.';dbname='. $database, $user, $password);
+$pdo = new PDO('mysql:host='.$config->host.';dbname='. $config->database, $config->user, $config->password);
 
 $sql = "SELECT * FROM accounts";
 
